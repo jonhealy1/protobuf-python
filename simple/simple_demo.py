@@ -14,3 +14,11 @@ print(simple_message)
 with open("simple.bin", "wb") as f:
     bytesAsString = simple_message.SerializeToString()
     f.write(bytesAsString)
+
+with open("simple.bin", "rb") as f:
+    simple_message_read = simple_pb2.SimpleMessage().FromString(f.read())
+
+print(simple_message_read)
+
+print("Is simple?: ", str(simple_message.is_simple))
+print("Id?: ", str(simple_message.id))
